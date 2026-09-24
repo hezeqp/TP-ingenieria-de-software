@@ -1,0 +1,81 @@
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background-color: #d9dcd6;
+    font-family: Arial, sans-serif;
+}
+
+/* Encabezado */
+
+.titulo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    background-color: white;
+}
+
+.titulo img {
+    max-width: 45%;
+    height: auto;
+    max-height: 100px;
+    object-fit: contain;
+}
+
+/* Título del portal */
+
+.parrafos {
+    background-color: #16425b;
+    color: white;
+    text-align: center;
+    padding: 25px;
+}
+
+.parrafos h1 {
+    font-size: 32px;
+    margin: 0 0 10px;
+}
+
+.parrafos p {
+    font-size: 20px;
+    margin: 0;
+}
+
+/* Imagen principal */
+
+.logo-principal {
+    display: flex;
+    justify-content: center;
+    margin: 30px 0;
+}
+
+.logo-principal img {
+    width: 450px;
+    max-width: 90%;
+    height: auto;
+}
+
+/* Botones de navegación */
+
+.botones {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    margin-bottom: 30px;
+}
+
+.botones a {
+    background-color: #16425b;
+    color: white;
+    text-decoration: none;
+    padding: 15px 30px;
+    border-radius: 8px;
+}
+
+.botones a:hover {
+    background-color: #256b94;
+}

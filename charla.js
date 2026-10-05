@@ -37,7 +37,7 @@ let charlas = [
     }
 ];
 
-//traemos el div del html
+//traemos el div de charlas del html o guardamos el Div
 let lista = document.getElementById("lista-charlas");
 
 
@@ -45,19 +45,36 @@ let lista = document.getElementById("lista-charlas");
 //recorremos la lista de charlas
 for (let i = 0; i < charlas.length; i++) {
     //escribimos en el div
-    lista.innerHTML += 
-    "<div class= 'charla'>"+
-    "<h3>"+ charlas[i].nombre + "</h3>"+
-    "<p>"+ charlas[i].tema + "</p>"+
-    "<p>"+ charlas[i].fecha + "</p>"+
-    "<p>"+ charlas[i].horario + "</p>"+
-    "<p>"+ charlas[i].sede + "</p>"+
-    "<p>"+ charlas[i].direccion + "</p>"+
-    "</div>"
+    lista.innerHTML +=
+        "<div class= 'charla'>" +
+        "<h3>" + charlas[i].nombre + "</h3>" +
+        "<p>" + charlas[i].tema + "</p>" +
+        "<p>" + charlas[i].fecha + "</p>" +
+        "<p>" + charlas[i].horario + "</p>" +
+        "<p>" + charlas[i].sede + "</p>" +
+        "<p>" + charlas[i].direccion + "</p>" +
+        "</div>"
 }
 
-//guardamos el div
+//nos guardamos el input del usuario
+let buscador = document.getElementById("buscador");
 
+buscador.addEventListener("input", function () {
+    let texto = buscador.value;
 
-
-//buscamos elementos del HTML
+    let resultado = charlas.filter(function (charla) {
+        return charla.direccion == texto;
+    });
+    lista.innerHTML = "";
+    for (let i = 0; i < resultado.length; i++) {
+        lista.innerHTML +=
+            "<div class='charla'>" +
+            "<h3>" + charlas[i].nombre + "</h3>" +
+            "<p>" + charlas[i].tema + "</p>" +
+            "<p>" + charlas[i].fecha + "</p>" +
+            "<p>" + charlas[i].horario + "</p>" +
+            "<p>" + charlas[i].sede + "</p>" +
+            "<p>" + charlas[i].direccion + "</p>" +
+            "</div>"
+    }
+});

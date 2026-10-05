@@ -9,7 +9,6 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 
 
 
-
 let charlas = [
     {
         nombre: "Guia primeriza para ser Autoridad de Mesa",
@@ -38,10 +37,27 @@ let charlas = [
         horario: "15:00hs a 17:00hs",
         sede: "Escuela Manuel Belgrano",
         direccion: "san miguel",
-        latitud: -34.52131618214875,
-        longitud: -58.70991897996137
+        latitud: -34.56442043082822,
+        longitud: -58.720358137549326
     }
 ];
+
+//agregamos marcadores al mapa
+for (let i = 0; i < charlas.length; i++) {
+
+    L.marker([
+        charlas[i].latitud,
+        charlas[i].longitud
+    ]).bindPopup(
+        "<b>" + charlas[i].nombre + "</b>" +
+        "<p>Tema: " + charlas[i].tema + "</p>" +
+        "<p>Fecha: " + charlas[i].fecha + "</p>" +
+        "<p>Hora: " + charlas[i].horario + "</p>" +
+        "<p>Dirección: " + charlas[i].direccion + "</p>"
+    )
+        .addTo(mapa);
+
+}
 
 //traemos el div de charlas del html o guardamos el Div
 let lista = document.getElementById("lista-charlas");
@@ -87,8 +103,10 @@ buscador.addEventListener("input", function () {
                 "<p>" + resultado[i].direccion + "</p>" +
                 "</div>"
         }
-    }else{
+    } else {
         lista.innerHTML = "No hay resultado para tu busqueda";
     }
 
 });
+
+

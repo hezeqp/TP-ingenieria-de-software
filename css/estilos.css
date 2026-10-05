@@ -66,9 +66,20 @@ body {
     justify-content: center;
     gap: 25px;
     margin-bottom: 30px;
+    
+    
 }
 
-.botones a {
+.botones_registrate{
+    background-color: #16425b;
+    color: white;
+    text-decoration: none;
+    padding: 15px 30px;
+    border-radius: 8px;
+    
+
+}
+.botones_charla{
     background-color: #16425b;
     color: white;
     text-decoration: none;
@@ -76,6 +87,3 @@ body {
     border-radius: 8px;
 }
 
-.botones a:hover {
-    background-color: #256b94;
-}

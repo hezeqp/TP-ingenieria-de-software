@@ -1,0 +1,63 @@
+const mapa = L.map('map').setView([-34.52293382299685, -58.70052051955064], 13)
+
+//cargamos el fondo del mapa
+L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+}).addTo(mapa);
+
+
+
+
+
+
+let charlas = [
+    {
+        nombre: "Guia primeriza para ser Autoridad de Mesa",
+        tema: "Tareas de autoridad de mesa: antes, durante, y despues",
+        fecha: "Miercoles 15 de octubre de 2026",
+        horario: "15:00hs a 17:00hs",
+        sede: "Institulo Educativo N°31",
+        direccion: "Juan Maria gutierres  1150, Polvorines"
+    },
+    {
+        nombre: "Contar bien, registrar mejor, el cierre de mesa",
+        tema: "escrutinio de votos, completado del acta  de cierre  y entrega de la urna",
+        fecha: "Viernes 17 de octubre de 2026",
+        horario: "11:00hs a 13:00hs",
+        sede: "Instituto Manuel Belgrano",
+        direccion: "contitucion 3848, Jose C. Paz"
+    },
+    {
+        nombre: "Dudas en la mesa: casos reales y como resolverlos",
+        tema: "derecho y obligaciones del autoridad de mesa, y resolucion de conflictos",
+        fecha: "Lunes 1 de noviembre de 2026",
+        horario: "15:00hs a 17:00hs",
+        sede: "Escuela Manuel Belgrano",
+        direccion: "san miguel"
+    }
+];
+
+//traemos el div del html
+let lista = document.getElementById("lista-charlas");
+
+
+
+//recorremos la lista de charlas
+for (let i = 0; i < charlas.length; i++) {
+    //escribimos en el div
+    lista.innerHTML += 
+    "<div class= 'charla'>"+
+    "<h3>"+ charlas[i].nombre + "</h3>"+
+    "<p>"+ charlas[i].tema + "</p>"+
+    "<p>"+ charlas[i].fecha + "</p>"+
+    "<p>"+ charlas[i].horario + "</p>"+
+    "<p>"+ charlas[i].sede + "</p>"+
+    "<p>"+ charlas[i].direccion + "</p>"+
+    "</div>"
+}
+
+//guardamos el div
+
+
+
+//buscamos elementos del HTML

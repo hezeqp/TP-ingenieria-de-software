@@ -63,18 +63,19 @@ buscador.addEventListener("input", function () {
     let texto = buscador.value;
 
     let resultado = charlas.filter(function (charla) {
-        return charla.direccion == texto;
+        return charla.direccion.includes(texto);
     });
     lista.innerHTML = "";
     for (let i = 0; i < resultado.length; i++) {
+        //creamos nuevas tarjetas
         lista.innerHTML +=
             "<div class='charla'>" +
-            "<h3>" + charlas[i].nombre + "</h3>" +
-            "<p>" + charlas[i].tema + "</p>" +
-            "<p>" + charlas[i].fecha + "</p>" +
-            "<p>" + charlas[i].horario + "</p>" +
-            "<p>" + charlas[i].sede + "</p>" +
-            "<p>" + charlas[i].direccion + "</p>" +
+            "<h3>" + resultado[i].nombre + "</h3>" +
+            "<p>" + resultado[i].tema + "</p>" +
+            "<p>" + resultado[i].fecha + "</p>" +
+            "<p>" + resultado[i].horario + "</p>" +
+            "<p>" + resultado[i].sede + "</p>" +
+            "<p>" + resultado[i].direccion + "</p>" +
             "</div>"
     }
 });

@@ -17,7 +17,9 @@ let charlas = [
         fecha: "Miercoles 15 de octubre de 2026",
         horario: "15:00hs a 17:00hs",
         sede: "Institulo Educativo N°31",
-        direccion: "Juan Maria gutierres  1150, Polvorines"
+        direccion: "Juan Maria gutierres  1150, Polvorines",
+        latitud: -34.52413744014083,
+        longitud: -58.70412188092948
     },
     {
         nombre: "Contar bien, registrar mejor, el cierre de mesa",
@@ -25,7 +27,9 @@ let charlas = [
         fecha: "Viernes 17 de octubre de 2026",
         horario: "11:00hs a 13:00hs",
         sede: "Instituto Manuel Belgrano",
-        direccion: "contitucion 3848, Jose C. Paz"
+        direccion: "contitucion 3848, Jose C. Paz",
+        latitud: -34.53618081104696,
+        longitud: -58.745674900498784
     },
     {
         nombre: "Dudas en la mesa: casos reales y como resolverlos",
@@ -33,7 +37,9 @@ let charlas = [
         fecha: "Lunes 1 de noviembre de 2026",
         horario: "15:00hs a 17:00hs",
         sede: "Escuela Manuel Belgrano",
-        direccion: "san miguel"
+        direccion: "san miguel",
+        latitud: -34.52131618214875,
+        longitud: -58.70991897996137
     }
 ];
 
@@ -63,20 +69,26 @@ buscador.addEventListener("input", function () {
     let texto = buscador.value;
 
     let resultado = charlas.filter(function (charla) {
-        return charla.direccion.toLowerCase().includes(texto.toLowerCase()) || 
-        charla.nombre.toLowerCase().includes(texto.toLowerCase());
+        return charla.direccion.toLowerCase().includes(texto.toLowerCase()) ||
+            charla.nombre.toLowerCase().includes(texto.toLowerCase());
     });
-    lista.innerHTML = "";
-    for (let i = 0; i < resultado.length; i++) {
-        //creamos nuevas tarjetas
-        lista.innerHTML +=
-            "<div class='charla'>" +
-            "<h3>" + resultado[i].nombre + "</h3>" +
-            "<p>" + resultado[i].tema + "</p>" +
-            "<p>" + resultado[i].fecha + "</p>" +
-            "<p>" + resultado[i].horario + "</p>" +
-            "<p>" + resultado[i].sede + "</p>" +
-            "<p>" + resultado[i].direccion + "</p>" +
-            "</div>"
+    //si mi resultado tiene elementos
+    if (resultado.length > 0) {
+        lista.innerHTML = "";
+        for (let i = 0; i < resultado.length; i++) {
+            //creamos nuevas tarjetas
+            lista.innerHTML +=
+                "<div class='charla'>" +
+                "<h3>" + resultado[i].nombre + "</h3>" +
+                "<p>" + resultado[i].tema + "</p>" +
+                "<p>" + resultado[i].fecha + "</p>" +
+                "<p>" + resultado[i].horario + "</p>" +
+                "<p>" + resultado[i].sede + "</p>" +
+                "<p>" + resultado[i].direccion + "</p>" +
+                "</div>"
+        }
+    }else{
+        lista.innerHTML = "No hay resultado para tu busqueda";
     }
+
 });

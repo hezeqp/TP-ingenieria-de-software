@@ -63,7 +63,8 @@ buscador.addEventListener("input", function () {
     let texto = buscador.value;
 
     let resultado = charlas.filter(function (charla) {
-        return charla.direccion.includes(texto);
+        return charla.direccion.toLowerCase().includes(texto.toLowerCase()) || 
+        charla.nombre.toLowerCase().includes(texto.toLowerCase());
     });
     lista.innerHTML = "";
     for (let i = 0; i < resultado.length; i++) {

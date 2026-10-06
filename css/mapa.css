@@ -1,14 +1,22 @@
-#map{
+
+#map {
     height: 700px;
     width: 1024px;
 }
 
-#lista-charlas {
+
+.encabezado {
     display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
+    color: cornflowerblue;
+    justify-content: center;
+}
+
+
+#lista-charlas {
+    
     margin-bottom: 20px;
 }
+
 .charla {
     background-color: white;
     border: 1px solid black;
@@ -16,4 +24,11 @@
     margin: 10px;
     width: 300px;
 }
+.seleccionada{
+    background-color: lightgreen;
+}
 
+.lista-mapa{
+    display: flex;
+    
+}

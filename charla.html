@@ -18,21 +18,29 @@
 </head>
 
 <body>
-    <h1>Charlas de orientacion electoral</h1>
-    <p>Buscar charlas por nombre o localidad</p>
+    <div class="caja">
+        <div class="encabezado">
+            <h1>Charlas de orientacion electoral</h1>
 
-    <!-- Buscador de la charla-->
-    <input id="buscador" type="text" placeholder="Busca por nombre o direccion">
-    <h2>Charlas disponibles</h2>
-    <!--aqui JS agregara las charlas -->
-    <div id="lista-charlas"></div>
+        </div>
+
+        <div class="barra-buscador">
+            <!-- Buscador de la charla-->
+            <input id="buscador" type="text" placeholder="Busca por nombre o direccion">
+            <h2>Charlas disponibles</h2>
+        </div>
+
+        <div class="lista-mapa">
+            <!--aqui JS agregara las charlas -->
+            <div id="lista-charlas"></div>
+
+            <div id="map"></div>
+        </div>
 
 
-    <div id="map">
+
 
     </div>
-
-
     <script src="charla.js"></script>
 </body>
 

@@ -42,41 +42,50 @@ let charlas = [
     }
 ];
 
-//agregamos marcadores al mapa
-for (let i = 0; i < charlas.length; i++) {
+let marcadores = [];
+function agregarMarcadoresAlMapa() {
+    //agregamos marcadores al mapa
+    for (let i = 0; i < charlas.length; i++) {
 
-    L.marker([
-        charlas[i].latitud,
-        charlas[i].longitud
-    ]).bindPopup(
-        "<b>" + charlas[i].nombre + "</b>" +
-        "<p>Tema: " + charlas[i].tema + "</p>" +
-        "<p>Fecha: " + charlas[i].fecha + "</p>" +
-        "<p>Hora: " + charlas[i].horario + "</p>" +
-        "<p>Dirección: " + charlas[i].direccion + "</p>"
-    )
-        .addTo(mapa);
+        var marcador = L.marker([
+            charlas[i].latitud,
+            charlas[i].longitud
+        ]).bindPopup(
+            "<b>" + charlas[i].nombre + "</b>" +
+            "<p>Tema: " + charlas[i].tema + "</p>" +
+            "<p>Fecha: " + charlas[i].fecha + "</p>" +
+            "<p>Hora: " + charlas[i].horario + "</p>" +
+            "<p>Dirección: " + charlas[i].direccion + "</p>"
+        ).addTo(mapa);
+        marcadores.push(marcador);
+        marcador.on("click", function () {
+            tarjetas[i].scrollIntoView();
+        });
 
+    }
 }
 
 //traemos el div de charlas del html o guardamos el Div
 let lista = document.getElementById("lista-charlas");
 
-
-
-//recorremos la lista de charlas
-for (let i = 0; i < charlas.length; i++) {
-    //escribimos en el div
-    lista.innerHTML +=
-        "<div class= 'charla'>" +
-        "<h3>" + charlas[i].nombre + "</h3>" +
-        "<p>" + charlas[i].tema + "</p>" +
-        "<p>" + charlas[i].fecha + "</p>" +
-        "<p>" + charlas[i].horario + "</p>" +
-        "<p>" + charlas[i].sede + "</p>" +
-        "<p>" + charlas[i].direccion + "</p>" +
-        "</div>"
+function crearTarjetas() {
+    //recorremos la lista de charlas
+    for (let i = 0; i < charlas.length; i++) {
+        //escribimos en el div
+        lista.innerHTML +=
+            "<div class= 'charla' data-indice='" + i + "'>" +
+            "<h3>" + charlas[i].nombre + "</h3>" +
+            "<p>" + charlas[i].tema + "</p>" +
+            "<p>" + charlas[i].fecha + "</p>" +
+            "<p>" + charlas[i].horario + "</p>" +
+            "<p>" + charlas[i].sede + "</p>" +
+            "<p>" + charlas[i].direccion + "</p>" +
+            "</div>"
+    }
 }
+
+
+
 
 //nos guardamos el input del usuario
 let buscador = document.getElementById("buscador");
@@ -110,3 +119,26 @@ buscador.addEventListener("input", function () {
 });
 
 
+
+crearTarjetas();
+agregarMarcadoresAlMapa();
+
+
+let tarjetas = document.getElementsByClassName("charla");
+for (let i = 0; i < tarjetas.length; i++) {
+    tarjetas[i].addEventListener("click", function () {
+
+        let indice = tarjetas[i].getAttribute("data-indice");
+        let marcador = marcadores[indice];
+
+        let posicion = marcador.getLatLng();
+        mapa.setView(posicion, 16);
+        for (let j = 0; j < tarjetas.length; j++) {
+            tarjetas[j].classList.remove("seleccionada");
+        }
+        this.classList.add("seleccionada");
+    });
+};
+marcadores[0].on("click", function () {
+    console.log("hiciste click");
+});
